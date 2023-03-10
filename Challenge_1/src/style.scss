@@ -1,0 +1,159 @@
+@font-face {
+    font-family: 'kanit';
+    src: url('kanit-bold.woff2') format('woff2')
+    url('kanit-bold.woff') format('woff');
+}
+
+html, body {
+    height: 100vh;
+}
+  
+body {
+    background: black;
+    color: white;
+    font-family: 'kanit', sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+nav {
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 5rem;
+    justify-content: space-between;
+    padding: 0;
+    position: relative;
+    flex-shrink: 0;
+
+    animation: navbarFadeIn 1s ease-in-out;
+
+    ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        display: flex;
+        align-items: center;
+
+        &:first-child {
+            gap: 1rem
+        }
+
+        &:last-child {
+            gap: 0.4rem
+        }
+    }
+
+    .logo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+}
+
+.hero {
+    text-align: center;
+    margin: 1vw 0;
+    h1 {
+        margin: 0;
+        text-transform: uppercase;
+        padding: 0;
+        line-height: 0.8;
+        font-size: calc(9000vw / 1018);
+        overflow: hidden;
+
+        span {
+            display: inline-block;
+            animation: titleFadeIn .5s ease-in-out forwards;
+        }
+
+        &:last-child {
+            color: transparent;
+            background-color: transparent;
+            -webkit-text-stroke: calc(300vw / 745) white;
+            //text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+        }
+    }
+}
+
+.images {
+    display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    flex-grow: 1;
+    gap: .5rem;
+    padding: 1rem 1rem 1rem 1rem;
+
+    > div {
+        position: relative;
+        overflow: hidden;
+
+        &:after{
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: black;
+            animation: rideau .5s ease-in forwards;
+        }
+
+        &:nth-child(1){
+            &::after {
+                animation-delay: .2s;
+            }
+        }
+        &:nth-child(2){
+            &::after {
+                animation-delay: .4s;
+            }
+        }
+        &:nth-child(3){
+            &::after {
+                animation-delay: .6s;
+            }
+        }
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 1rem;
+    }
+}
+
+@keyframes navbarFadeIn{
+    0% {
+        transform: translateY(-10%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+}
+
+@keyframes titleFadeIn {
+    0% {
+        transform: translateY(50%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+}
+
+@keyframes rideau {
+    0% {
+        transform: translateY(0%);
+    }
+    100% {
+        transform: translateY(100%);
+    }
+}
+  
